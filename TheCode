@@ -1,0 +1,37 @@
+from operator import mul, truediv, sub, add
+import random
+d = 0 #test
+operators = {
+    "*": mul,
+    "+": add,
+    "-": sub,
+    "/": truediv
+}
+answers = []
+keys = list(operators)
+n = 0
+q = 0
+if n == 0:
+    while q < 10000:
+        operator1 = random.choice(keys)
+        a = operators[operator1](4,2)
+        operator2 = random.choice(keys)
+        b = operators[operator2](a,7)
+        operator3 = random.choice(keys)
+        c = operators[operator3](b,1)
+        operator4 = random.choice(keys)
+        d = operators[operator4](c,4)
+        usedoperators = ["4",operator1,"2",operator2,"7",operator3,"1",operator4,"4"]
+        if d == 18:
+            if usedoperators in answers:
+                pass
+            else:
+                answers.append(usedoperators)
+        q += 1
+n += 1
+answers.remove(["4","-","2","*","7","/","1","+","4"])
+answers.remove(["4","-","2","*","7","*","1","+","4"])
+print(answers)
+print(q)
+print(len(answers))
+
