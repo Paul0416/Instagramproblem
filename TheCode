@@ -1,37 +1,36 @@
-from operator import mul, truediv, sub, add
-import random
-d = 0 #test
-operators = {
+from operator import mul, truediv, sub, add #import operator library
+import random #import random    
+d = 0 #create variable d
+operators = { #create dictionary with the operator signs as keys and the values as the functions
     "*": mul,
     "+": add,
     "-": sub,
     "/": truediv
 }
-answers = []
-keys = list(operators)
-n = 0
-q = 0
-if n == 0:
-    while q < 10000:
-        operator1 = random.choice(keys)
-        a = operators[operator1](4,2)
-        operator2 = random.choice(keys)
-        b = operators[operator2](a,7)
-        operator3 = random.choice(keys)
-        c = operators[operator3](b,1)
-        operator4 = random.choice(keys)
-        d = operators[operator4](c,4)
-        usedoperators = ["4",operator1,"2",operator2,"7",operator3,"1",operator4,"4"]
-        if d == 18:
+answers = [] #create a list for storing the final answers later on
+keys = list(operators) #turn the keys from the dictionary into the list
+n = 0 #create variable n
+q = 0 #create variable q
+if n == 0: # get the whole thing running
+    while q < 10000: #run the whole thing 10000 times
+        operator1 = random.choice(keys) #generate a random key for the first operator
+        a = operators[operator1](4,2) #get the value of the first key, then apply it to the first numbers
+        operator2 = random.choice(keys) #generate a random key for the second operator
+        b = operators[operator2](a,7) #get the value of the 2nd key, then apply it
+        operator3 = random.choice(keys) #generate a random key for the third operator
+        c = operators[operator3](b,1) #get the value of the 3nd key, then apply it
+        operator4 = random.choice(keys) #generate a random key for the fourth operator
+        d = operators[operator4](c,4) #get the value of the 4nd key, then apply it
+        usedoperators = ["4",operator1,"2",operator2,"7",operator3,"1",operator4,"4"] #create a list with all of the randomized possibilities
+        if d == 18: # check if the answer is 18
             if usedoperators in answers:
-                pass
+                pass #do nothing
             else:
-                answers.append(usedoperators)
+                answers.append(usedoperators) #add it to the list with all the possible answers
         q += 1
 n += 1
-answers.remove(["4","-","2","*","7","/","1","+","4"])
-answers.remove(["4","-","2","*","7","*","1","+","4"])
-print(answers)
-print(q)
-print(len(answers))
+answers.remove(["4","-","2","*","7","/","1","+","4"]) #delete a wrong answer (my code doesn't work with order of operations, im not skilled enough for that. kinda feels like cheating
+answers.remove(["4","-","2","*","7","*","1","+","4"]) #delete a wrong answer (my code doesn't work with order of operations, im not skilled enough for that. kinda feels like cheating
+print(answers) #print all answers
+print(len(answers))#print how many correct answers there are
 
